@@ -1,8 +1,3 @@
-# .bashrc
-if [ -r ~/.bashrc ]; then
-   source ~/.bashrc
-fi
-
 # bash-completion
 if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
   . /opt/local/etc/profile.d/bash_completion.sh
@@ -36,3 +31,12 @@ fi
 if [ -f ~/.git-completion.bash ]; then
   source ~/.git-completion.bash
 fi
+
+# bash history
+unset HISTFILESIZE
+HISTSIZE=5000
+HISTCONTROL=ignoreboth
+PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
+export HISTSIZE HISTCONTROL PROMPT_COMMAND
+
+shopt -s histappend
